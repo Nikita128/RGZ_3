@@ -8,11 +8,20 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using OxyPlot.WindowsForms;
+using OxyPlot;
+using OxyPlot.Series;
 
 namespace RGZ_3
 {
     public partial class MainForm : Form
     {
+        private Form results = new Form
+        {
+            Width = 600,
+            Height = 600,
+            StartPosition = FormStartPosition.CenterScreen
+        };
+
         Dictionary<double, double> originalObject;
         Dictionary<double, double> model;
 
@@ -70,10 +79,55 @@ namespace RGZ_3
         {
             if (originalObject == null)
             {
-                MessageBox.Show("Объект не был сгенерирован");
+                MessageBox.Show("Объект не был сгенерирован", "Ошибка");
                 return;
             }
 
+            double x1, x2, delta;
+            int n;
+
+            try
+            {
+                n = Convert.ToInt32(nTextBox.Text);
+                x1 = Convert.ToDouble(x1TextBox.Text);
+                x2 = Convert.ToDouble(x2TextBox.Text);
+            }
+            catch (FormatException)
+            {
+                MessageBox.Show("Введены некорректные данные.", "Ошибка ввода");
+                return;
+            }
+
+            delta = Math.Abs(x1 - x2) / n;
+
+            ScatterSeries orObj = new ScatterSeries();
+            foreach (var v in originalObject)
+                orObj.Points.Add(new ScatterPoint(v.Key, v.Value, 4));
+
+            FunctionSeries f = new FunctionSeries(T => { return function(T); }, x1, x2, delta);
+
+            PlotModel plot = new PlotModel()
+            {
+                Title = "Объект"
+            };
+            
+            PlotView view = new PlotView()
+            {
+                Dock = DockStyle.Left,
+                BackColor = Color.White,
+                Height = 550,
+                Width = 550,
+                Model = plot
+            };
+
+            plot.Series.Add(orObj);
+            plot.Series.Add(f);
+
+            results.Controls.Add(view);
+
+            results.Refresh();
+            results.ShowDialog();
+            results.Controls.Remove(view);
         }
     }
 }

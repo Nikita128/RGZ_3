@@ -250,7 +250,6 @@
             // 
             // showButton
             // 
-            this.showButton.Enabled = false;
             this.showButton.Location = new System.Drawing.Point(297, 200);
             this.showButton.Name = "showButton";
             this.showButton.Size = new System.Drawing.Size(90, 23);
