@@ -44,7 +44,7 @@ namespace RGZ_3
 
                 case CoreType.Parabola:
                     if (Math.Abs(z) <= 1)
-                        return 0.75 * Math.Pow(1 - z, 2);
+                        return 0.75 * (1 - Math.Pow(z, 2));
                     else return 0;
 
                 case CoreType.Cube:

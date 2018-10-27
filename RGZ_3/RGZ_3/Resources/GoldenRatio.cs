@@ -1,8 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace RGZ_3
 {
@@ -20,24 +18,64 @@ namespace RGZ_3
             this.modelData = modelData;
         }
 
-        private double Function(double x)
+        private double Function(double b)
         {
-            double coreXN, reg, temp = 0;
+            modelData.B = b;
+            double coreXN, reg, quality = 0, temp = 0;
+            int tempIndL = 0, tempIndJ = 0;
+            bool flag = false;
             for (int i = 0; i < obj.Count; i++)
             {
-                coreXN = 0;
-                reg = 0;
+                coreXN = 0; reg = 0;
+                flag = false;
 
-                foreach (var elem in obj)                
-                    coreXN += modelData.CoreFunction(obj.ElementAt(i).Key, elem.Key);
-                
-                for (int j = 0; j < obj.Count; j++)                
-                    reg += (modelData.CoreFunction(obj.ElementAt(i).Key, obj.ElementAt(j).Key) / coreXN) * obj.ElementAt(j).Value;
+                for (int l = tempIndL; l < obj.Count; l++)
+                {
+                    if (l == i)
+                        continue;
 
-                temp += Math.Pow(obj.ElementAt(i).Value - reg, 2);
+                    temp = modelData.CoreFunction(obj.ElementAt(i).Key, obj.ElementAt(l).Key);
+                    if (temp != 0 && !flag)
+                    {
+                        flag = true;
+                        tempIndL = l;
+                        coreXN += temp;
+                    }
+                    else if (temp != 0)
+                    {                        
+                        coreXN += temp;
+                    }
+                    else if (temp == 0 && flag)
+                        break;                       
+                }
+
+                flag = false;
+
+                for (int j = tempIndJ; j < obj.Count; j++)
+                {
+                    if (j == i)
+                        continue;
+
+                    temp = modelData.CoreFunction(obj.ElementAt(i).Key, obj.ElementAt(j).Key);
+
+                    if (temp != 0 && !flag)
+                    {
+                        flag = true;
+                        tempIndJ = j;
+                        reg += (temp / coreXN) * obj.ElementAt(j).Value;
+                    }
+                    else if(temp != 0)
+                    {
+                        reg += (temp / coreXN) * obj.ElementAt(j).Value;
+                    }
+                    else if (temp == 0 && flag)
+                        break;                    
+                }                    
+
+                quality += Math.Pow(obj.ElementAt(i).Value - reg, 2);
             }
 
-            return temp / obj.Count;            
+            return quality / obj.Count;            
         }
 
         public double FindMin(double acc, double a0, double b0)

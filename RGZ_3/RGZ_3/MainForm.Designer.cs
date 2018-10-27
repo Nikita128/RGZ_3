@@ -47,11 +47,11 @@
             this.linearRadioButton = new System.Windows.Forms.RadioButton();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.buildButton = new System.Windows.Forms.Button();
-            this.cubicRadioButton = new System.Windows.Forms.RadioButton();
-            this.parRadioButton = new System.Windows.Forms.RadioButton();
-            this.triRadioButton = new System.Windows.Forms.RadioButton();
-            this.rectRadioButton = new System.Windows.Forms.RadioButton();
             this.showButton = new System.Windows.Forms.Button();
+            this.rectCheckBox = new System.Windows.Forms.CheckBox();
+            this.triCheckBox = new System.Windows.Forms.CheckBox();
+            this.parCheckBox = new System.Windows.Forms.CheckBox();
+            this.cubeCheckBox = new System.Windows.Forms.CheckBox();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.SuspendLayout();
@@ -96,6 +96,7 @@
             this.x2TextBox.Name = "x2TextBox";
             this.x2TextBox.Size = new System.Drawing.Size(52, 20);
             this.x2TextBox.TabIndex = 15;
+            this.x2TextBox.Text = "5";
             // 
             // label7
             // 
@@ -112,6 +113,7 @@
             this.x1TextBox.Name = "x1TextBox";
             this.x1TextBox.Size = new System.Drawing.Size(50, 20);
             this.x1TextBox.TabIndex = 13;
+            this.x1TextBox.Text = "0";
             // 
             // label4
             // 
@@ -137,6 +139,7 @@
             this.nTextBox.Name = "nTextBox";
             this.nTextBox.Size = new System.Drawing.Size(81, 20);
             this.nTextBox.TabIndex = 10;
+            this.nTextBox.Text = "100";
             // 
             // generateButton
             // 
@@ -172,6 +175,7 @@
             this.dTextBox.Name = "dTextBox";
             this.dTextBox.Size = new System.Drawing.Size(65, 20);
             this.dTextBox.TabIndex = 3;
+            this.dTextBox.Text = "0,6";
             // 
             // label1
             // 
@@ -188,6 +192,7 @@
             this.mTextBox.Name = "mTextBox";
             this.mTextBox.Size = new System.Drawing.Size(65, 20);
             this.mTextBox.TabIndex = 1;
+            this.mTextBox.Text = "0";
             // 
             // nonLinearRadioButton
             // 
@@ -214,6 +219,7 @@
             // linearRadioButton
             // 
             this.linearRadioButton.AutoSize = true;
+            this.linearRadioButton.Checked = true;
             this.linearRadioButton.Location = new System.Drawing.Point(11, 19);
             this.linearRadioButton.Name = "linearRadioButton";
             this.linearRadioButton.Size = new System.Drawing.Size(116, 17);
@@ -224,11 +230,11 @@
             // 
             // groupBox2
             // 
+            this.groupBox2.Controls.Add(this.cubeCheckBox);
             this.groupBox2.Controls.Add(this.buildButton);
-            this.groupBox2.Controls.Add(this.cubicRadioButton);
-            this.groupBox2.Controls.Add(this.parRadioButton);
-            this.groupBox2.Controls.Add(this.triRadioButton);
-            this.groupBox2.Controls.Add(this.rectRadioButton);
+            this.groupBox2.Controls.Add(this.parCheckBox);
+            this.groupBox2.Controls.Add(this.rectCheckBox);
+            this.groupBox2.Controls.Add(this.triCheckBox);
             this.groupBox2.Location = new System.Drawing.Point(239, 12);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(216, 158);
@@ -238,6 +244,7 @@
             // 
             // buildButton
             // 
+            this.buildButton.Enabled = false;
             this.buildButton.Location = new System.Drawing.Point(11, 123);
             this.buildButton.Name = "buildButton";
             this.buildButton.Size = new System.Drawing.Size(75, 23);
@@ -246,65 +253,66 @@
             this.buildButton.UseVisualStyleBackColor = true;
             this.buildButton.Click += new System.EventHandler(this.buildButton_Click);
             // 
-            // cubicRadioButton
-            // 
-            this.cubicRadioButton.AutoSize = true;
-            this.cubicRadioButton.Location = new System.Drawing.Point(11, 88);
-            this.cubicRadioButton.Name = "cubicRadioButton";
-            this.cubicRadioButton.Size = new System.Drawing.Size(111, 17);
-            this.cubicRadioButton.TabIndex = 0;
-            this.cubicRadioButton.TabStop = true;
-            this.cubicRadioButton.Text = "Кубическое ядро";
-            this.cubicRadioButton.UseVisualStyleBackColor = true;
-            // 
-            // parRadioButton
-            // 
-            this.parRadioButton.AutoSize = true;
-            this.parRadioButton.Location = new System.Drawing.Point(11, 65);
-            this.parRadioButton.Name = "parRadioButton";
-            this.parRadioButton.Size = new System.Drawing.Size(137, 17);
-            this.parRadioButton.TabIndex = 0;
-            this.parRadioButton.TabStop = true;
-            this.parRadioButton.Text = "Параболическое ядро";
-            this.parRadioButton.UseVisualStyleBackColor = true;
-            // 
-            // triRadioButton
-            // 
-            this.triRadioButton.AutoSize = true;
-            this.triRadioButton.Location = new System.Drawing.Point(11, 42);
-            this.triRadioButton.Name = "triRadioButton";
-            this.triRadioButton.Size = new System.Drawing.Size(117, 17);
-            this.triRadioButton.TabIndex = 0;
-            this.triRadioButton.TabStop = true;
-            this.triRadioButton.Text = "Треугольное ядро";
-            this.triRadioButton.UseVisualStyleBackColor = true;
-            // 
-            // rectRadioButton
-            // 
-            this.rectRadioButton.AutoSize = true;
-            this.rectRadioButton.Location = new System.Drawing.Point(11, 19);
-            this.rectRadioButton.Name = "rectRadioButton";
-            this.rectRadioButton.Size = new System.Drawing.Size(132, 17);
-            this.rectRadioButton.TabIndex = 0;
-            this.rectRadioButton.TabStop = true;
-            this.rectRadioButton.Text = "Прямоугольное ядро";
-            this.rectRadioButton.UseVisualStyleBackColor = true;
-            // 
             // showButton
             // 
-            this.showButton.Location = new System.Drawing.Point(297, 200);
+            this.showButton.Enabled = false;
+            this.showButton.Location = new System.Drawing.Point(250, 176);
             this.showButton.Name = "showButton";
-            this.showButton.Size = new System.Drawing.Size(90, 23);
+            this.showButton.Size = new System.Drawing.Size(75, 23);
             this.showButton.TabIndex = 8;
             this.showButton.Text = "Показать";
             this.showButton.UseVisualStyleBackColor = true;
             this.showButton.Click += new System.EventHandler(this.showButton_Click);
             // 
+            // rectCheckBox
+            // 
+            this.rectCheckBox.AutoSize = true;
+            this.rectCheckBox.Location = new System.Drawing.Point(11, 19);
+            this.rectCheckBox.Name = "rectCheckBox";
+            this.rectCheckBox.Size = new System.Drawing.Size(133, 17);
+            this.rectCheckBox.TabIndex = 10;
+            this.rectCheckBox.Text = "Прямоугольное ядро";
+            this.rectCheckBox.UseVisualStyleBackColor = true;
+            this.rectCheckBox.CheckedChanged += new System.EventHandler(this.rectCheckBox_CheckedChanged);
+            // 
+            // triCheckBox
+            // 
+            this.triCheckBox.AutoSize = true;
+            this.triCheckBox.Location = new System.Drawing.Point(11, 42);
+            this.triCheckBox.Name = "triCheckBox";
+            this.triCheckBox.Size = new System.Drawing.Size(118, 17);
+            this.triCheckBox.TabIndex = 11;
+            this.triCheckBox.Text = "Треугольное ядро";
+            this.triCheckBox.UseVisualStyleBackColor = true;
+            this.triCheckBox.CheckedChanged += new System.EventHandler(this.triCheckBox_CheckedChanged);
+            // 
+            // parCheckBox
+            // 
+            this.parCheckBox.AutoSize = true;
+            this.parCheckBox.Location = new System.Drawing.Point(11, 65);
+            this.parCheckBox.Name = "parCheckBox";
+            this.parCheckBox.Size = new System.Drawing.Size(138, 17);
+            this.parCheckBox.TabIndex = 12;
+            this.parCheckBox.Text = "Параболическое ядро";
+            this.parCheckBox.UseVisualStyleBackColor = true;
+            this.parCheckBox.CheckedChanged += new System.EventHandler(this.parCheckBox_CheckedChanged);
+            // 
+            // cubeCheckBox
+            // 
+            this.cubeCheckBox.AutoSize = true;
+            this.cubeCheckBox.Location = new System.Drawing.Point(11, 88);
+            this.cubeCheckBox.Name = "cubeCheckBox";
+            this.cubeCheckBox.Size = new System.Drawing.Size(112, 17);
+            this.cubeCheckBox.TabIndex = 13;
+            this.cubeCheckBox.Text = "Кубическое ядро";
+            this.cubeCheckBox.UseVisualStyleBackColor = true;
+            this.cubeCheckBox.CheckedChanged += new System.EventHandler(this.cubeCheckBox_CheckedChanged);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(472, 298);
+            this.ClientSize = new System.Drawing.Size(467, 298);
             this.Controls.Add(this.showButton);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
@@ -334,10 +342,6 @@
         private System.Windows.Forms.RadioButton squareRadioButton;
         private System.Windows.Forms.RadioButton linearRadioButton;
         private System.Windows.Forms.GroupBox groupBox2;
-        private System.Windows.Forms.RadioButton cubicRadioButton;
-        private System.Windows.Forms.RadioButton parRadioButton;
-        private System.Windows.Forms.RadioButton triRadioButton;
-        private System.Windows.Forms.RadioButton rectRadioButton;
         private System.Windows.Forms.Button buildButton;
         private System.Windows.Forms.Button showButton;
         private System.Windows.Forms.Label label6;
@@ -345,6 +349,10 @@
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.TextBox x1TextBox;
         private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.CheckBox rectCheckBox;
+        private System.Windows.Forms.CheckBox triCheckBox;
+        private System.Windows.Forms.CheckBox parCheckBox;
+        private System.Windows.Forms.CheckBox cubeCheckBox;
     }
 }
 
