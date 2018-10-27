@@ -29,6 +29,11 @@
         private void InitializeComponent()
         {
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.label6 = new System.Windows.Forms.Label();
+            this.x2TextBox = new System.Windows.Forms.TextBox();
+            this.label7 = new System.Windows.Forms.Label();
+            this.x1TextBox = new System.Windows.Forms.TextBox();
+            this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.nTextBox = new System.Windows.Forms.TextBox();
             this.generateButton = new System.Windows.Forms.Button();
@@ -41,17 +46,12 @@
             this.squareRadioButton = new System.Windows.Forms.RadioButton();
             this.linearRadioButton = new System.Windows.Forms.RadioButton();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.buildButton = new System.Windows.Forms.Button();
             this.cubicRadioButton = new System.Windows.Forms.RadioButton();
             this.parRadioButton = new System.Windows.Forms.RadioButton();
             this.triRadioButton = new System.Windows.Forms.RadioButton();
             this.rectRadioButton = new System.Windows.Forms.RadioButton();
-            this.buildButton = new System.Windows.Forms.Button();
             this.showButton = new System.Windows.Forms.Button();
-            this.label4 = new System.Windows.Forms.Label();
-            this.label6 = new System.Windows.Forms.Label();
-            this.x2TextBox = new System.Windows.Forms.TextBox();
-            this.label7 = new System.Windows.Forms.Label();
-            this.x1TextBox = new System.Windows.Forms.TextBox();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.SuspendLayout();
@@ -80,6 +80,47 @@
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Генерация объекта";
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(112, 156);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(36, 13);
+            this.label6.TabIndex = 16;
+            this.label6.Text = "x кон.";
+            // 
+            // x2TextBox
+            // 
+            this.x2TextBox.Location = new System.Drawing.Point(154, 153);
+            this.x2TextBox.Name = "x2TextBox";
+            this.x2TextBox.Size = new System.Drawing.Size(52, 20);
+            this.x2TextBox.TabIndex = 15;
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(15, 156);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(35, 13);
+            this.label7.TabIndex = 14;
+            this.label7.Text = "x нач.";
+            // 
+            // x1TextBox
+            // 
+            this.x1TextBox.Location = new System.Drawing.Point(51, 153);
+            this.x1TextBox.Name = "x1TextBox";
+            this.x1TextBox.Size = new System.Drawing.Size(50, 20);
+            this.x1TextBox.TabIndex = 13;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(8, 128);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(122, 13);
+            this.label4.TabIndex = 12;
+            this.label4.Text = "Область определения:";
             // 
             // label5
             // 
@@ -195,6 +236,16 @@
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Построение модели";
             // 
+            // buildButton
+            // 
+            this.buildButton.Location = new System.Drawing.Point(11, 123);
+            this.buildButton.Name = "buildButton";
+            this.buildButton.Size = new System.Drawing.Size(75, 23);
+            this.buildButton.TabIndex = 7;
+            this.buildButton.Text = "Построить";
+            this.buildButton.UseVisualStyleBackColor = true;
+            this.buildButton.Click += new System.EventHandler(this.buildButton_Click);
+            // 
             // cubicRadioButton
             // 
             this.cubicRadioButton.AutoSize = true;
@@ -239,15 +290,6 @@
             this.rectRadioButton.Text = "Прямоугольное ядро";
             this.rectRadioButton.UseVisualStyleBackColor = true;
             // 
-            // buildButton
-            // 
-            this.buildButton.Location = new System.Drawing.Point(11, 123);
-            this.buildButton.Name = "buildButton";
-            this.buildButton.Size = new System.Drawing.Size(75, 23);
-            this.buildButton.TabIndex = 7;
-            this.buildButton.Text = "Построить";
-            this.buildButton.UseVisualStyleBackColor = true;
-            // 
             // showButton
             // 
             this.showButton.Location = new System.Drawing.Point(297, 200);
@@ -257,47 +299,6 @@
             this.showButton.Text = "Показать";
             this.showButton.UseVisualStyleBackColor = true;
             this.showButton.Click += new System.EventHandler(this.showButton_Click);
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(8, 128);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(122, 13);
-            this.label4.TabIndex = 12;
-            this.label4.Text = "Область определения:";
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(112, 156);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(36, 13);
-            this.label6.TabIndex = 16;
-            this.label6.Text = "x кон.";
-            // 
-            // x2TextBox
-            // 
-            this.x2TextBox.Location = new System.Drawing.Point(154, 153);
-            this.x2TextBox.Name = "x2TextBox";
-            this.x2TextBox.Size = new System.Drawing.Size(52, 20);
-            this.x2TextBox.TabIndex = 15;
-            // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(15, 156);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(35, 13);
-            this.label7.TabIndex = 14;
-            this.label7.Text = "x нач.";
-            // 
-            // x1TextBox
-            // 
-            this.x1TextBox.Location = new System.Drawing.Point(51, 153);
-            this.x1TextBox.Name = "x1TextBox";
-            this.x1TextBox.Size = new System.Drawing.Size(50, 20);
-            this.x1TextBox.TabIndex = 13;
             // 
             // MainForm
             // 

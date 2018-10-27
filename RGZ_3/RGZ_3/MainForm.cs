@@ -129,5 +129,46 @@ namespace RGZ_3
             results.ShowDialog();
             results.Controls.Remove(view);
         }
+
+        private void buildButton_Click(object sender, EventArgs e)
+        {
+            if (originalObject == null)
+            {
+                MessageBox.Show("Объект не был сгенерирован", "Ошибка");
+                return;
+            }
+
+            double x1, x2, delta;
+            int n;
+            ModelBuilding.CoreType coreType = 0;
+
+            try
+            {
+                n = Convert.ToInt32(nTextBox.Text);
+                x1 = Convert.ToDouble(x1TextBox.Text);
+                x2 = Convert.ToDouble(x2TextBox.Text);
+            }
+            catch (FormatException)
+            {
+                MessageBox.Show("Введены некорректные данные.", "Ошибка ввода");
+                return;
+            }
+
+            delta = Math.Abs(x1 - x2) / n;
+
+            if (rectRadioButton.Checked)
+                coreType = ModelBuilding.CoreType.Recatangle;
+            else if (triRadioButton.Checked)
+                coreType = ModelBuilding.CoreType.Triangle;
+            else if (parRadioButton.Checked)
+                coreType = ModelBuilding.CoreType.Parabola;
+            else if (cubicRadioButton.Checked)
+                coreType = ModelBuilding.CoreType.Cube;
+
+            ModelBuilding modelBuilding = new ModelBuilding(delta, coreType);
+            GoldenRatio goldenRatio = new GoldenRatio(originalObject, modelBuilding);
+
+
+        }
     }
 }
